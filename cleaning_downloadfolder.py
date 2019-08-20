@@ -8,6 +8,9 @@ start_directory = "/home/" + str(user) + "/Downloads/"
 pdf_directory = "/home/" + str(user) + "/Downloads/PDF"
 iso_directory = "/home/" + str(user) + "/Downloads/ISO"
 misc_directory = "/home/" + str(user) + "/Downloads/MISC"
+picture_directory = "/home/" + str(user) + "/Downloads/PIC"
+text_directory = "/home/" + str(user) + "/Downloads/TXT"
+zip_directory = "/home/" + str(user) + "/Downloads/ZIP"
 fullpath = os.path.join
 
 def main():
@@ -18,8 +21,14 @@ def main():
                 source = fullpath(dirname, filename)
                 if filename.endswith("pdf"):
                     shutil.move(source, fullpath(pdf_directory, filename))
-                elif filename.endswith("iso"):
+                elif filename.endswith("iso") or filename.endswith("img"):
                     shutil.move(source, fullpath(iso_directory, filename))
+                elif filename.endswith("jpg") or filename.endswith("png"):
+                    shutil.move(source, fullpath(picture_directory, filename))
+                elif filename.endswith("txt"):
+                    shutil.move(source, fullpath(text_directory, filename))
+                elif filename.endswith("zip") or filename.endswith("xz") or filename.endswith("tgz"):
+                    shutil.move(source, fullpath(zip_directory, filename))
                 else:
                     shutil.move(source, fullpath(misc_directory, filename))
 
