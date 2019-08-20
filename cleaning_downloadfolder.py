@@ -1,23 +1,31 @@
 import os
 import shutil
+import time
+import getpass
 
-start_directory = "/home/blackarch/Downloads/"
-pdf_directory = "/home/blackarch/Downloads/PDF"
-iso_directory = "/home/blackarch/Downloads/ISO"
-misc_directory = "/home/blackarch/Downloads/MISC"
+user = getpass.getuser()
+print(user)
+start_directory = "/home/" + str(user) + "/Downloads/"
+pdf_directory = "/home/" + str(user) + "/Downloads/PDF"
+iso_directory = "/home/" + str(user) + "/Downloads/ISO"
+misc_directory = "/home/" + str(user) + "/Downloads/MISC"
 fullpath = os.path.join
 
-# os.chdir("~/Downloads/")
 def main():
-    for dirname, dirnames, filenames in os.walk(start_directory):
-        for filename in filenames:
-            source = fullpath(dirname, filename)
-            if filename.endswith("pdf"):
-                shutil.move(source, fullpath(pdf_directory, filename))
-            elif filename.endswith("iso"):
-                shutil.move(source, fullpath(iso_directory, filename))
-            else:
-                shutil.move(source, fullpath(misc_directory, filename))
+    while True:
+        time.sleep(5)
+        for dirname, dirnames, filenames in os.walk(start_directory):
+            for filename in filenames:
+                source = fullpath(dirname, filename)
+                if filename.endswith("pdf"):
+                    print("eins")
+                    shutil.move(source, fullpath(pdf_directory, filename))
+                elif filename.endswith("iso"):
+                    print("zwei")
+                    shutil.move(source, fullpath(iso_directory, filename))
+                else:
+                    print("drei")
+                    shutil.move(source, fullpath(misc_directory, filename))
 
 if __name__ == '__main__':
     main()
