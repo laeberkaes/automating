@@ -22,14 +22,14 @@ def main():
                 if filename.endswith("pdf"):
                     shutil.move(source, fullpath(pdf_directory, filename))
                 elif filename.endswith("iso") or filename.endswith("img"):
-                    shutil.move(source, fullpath(iso_directory, filename))
-                elif filename.endswith("jpg") or filename.endswith("png"):
+                    shutil.move(source, fullpath(iso_directory, filename
                     shutil.move(source, fullpath(picture_directory, filename))
                 elif filename.endswith("txt"):
                     shutil.move(source, fullpath(text_directory, filename))
                 elif filename.endswith("zip") or filename.endswith("xz") or filename.endswith("tgz"):
                     shutil.move(source, fullpath(zip_directory, filename))
-                else:
+                else:))
+                elif filename.endswith("jpg") or filename.endswith("png"):
                     shutil.move(source, fullpath(misc_directory, filename))
 
 if __name__ == '__main__':
